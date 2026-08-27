@@ -1,0 +1,117 @@
+{
+  "info": {
+    "_postman_id": "881105ee-d9c3-4bcb-b897-800147301f97",
+    "name": "M8_BLOG_54_3_G2",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "12060319"
+  },
+  "item": [
+    {
+      "name": "AUTH",
+      "item": [
+        {
+          "name": "REGISTRAR USUARIO",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "key": "nombre",
+                  "value": "Miguel",
+                  "type": "text",
+                  "uuid": "198aead1-760d-41df-86f9-8cc1f9bf74d3"
+                },
+                {
+                  "key": "email",
+                  "value": "miguel@gmail.com",
+                  "type": "text",
+                  "uuid": "7578cd42-a332-4c6e-9983-706c42c6c5d4"
+                },
+                {
+                  "key": "password",
+                  "value": "123456",
+                  "type": "text",
+                  "uuid": "6ea4079a-4eb7-41de-a212-2e156f7aef14"
+                }
+              ]
+            },
+            "url": {
+              "raw": "localhost:3000/auth/registro",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "auth",
+                "registro"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "LOGIN USUARIO",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "key": "email",
+                  "value": "miguel@gmail.com",
+                  "type": "text",
+                  "uuid": "7578cd42-a332-4c6e-9983-706c42c6c5d4"
+                },
+                {
+                  "key": "password",
+                  "value": "1234567",
+                  "type": "text",
+                  "uuid": "6ea4079a-4eb7-41de-a212-2e156f7aef14"
+                }
+              ]
+            },
+            "url": {
+              "raw": "localhost:3000/auth/login",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "auth",
+                "login"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "USUARIOS",
+      "item": [
+        {
+          "name": "New Request",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "localhost:3000/api/usuarios",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "usuarios"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}
