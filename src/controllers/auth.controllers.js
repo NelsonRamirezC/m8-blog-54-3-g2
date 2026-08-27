@@ -32,13 +32,11 @@ export const registroUsuario = async (req, res) => {
 
         if (!created) {
             await t.rollback();
-            return res
-                .status(400)
-                .json({
-                    status: "fail",
-                    message:
-                        "El email utilizado ya existe en la base de datos, intente recuperar su contraseña o debe ponerse en contacto con soporte: soporte@correo.cl",
-                });
+            return res.status(400).json({
+                status: "fail",
+                message:
+                    "El email utilizado ya existe en la base de datos, intente recuperar su contraseña o debe ponerse en contacto con soporte: soporte@correo.cl",
+            });
         }
 
         await t.commit();
@@ -48,6 +46,44 @@ export const registroUsuario = async (req, res) => {
         });
     } catch (error) {
         await t.rollback();
+        res.status(500).json({ status: "error", message: error.message });
+    }
+};
+
+export const login = async (req, res) => {
+    try {
+        let { email, password } = req.body;
+
+        if (!email || !password) {
+            await t.rollback();
+
+            return res.status(400).json({
+                status: "fail",
+                message:
+                    "No se proprocionan los campos requeridos. Debe proporcionar los siguientes campos:[email, password]",
+            });
+        }
+
+        email = email.toLowerCase().trim();
+
+        //buscar usuario por su correo
+        const usuario = await Usuario.findOne({ where: { email } });
+
+        if (!usuario || usuario.password != password) {
+            return res
+                .status(400)
+                .json({
+                    status: "fail",
+                    message:
+                        "Autenticación fallida: email y/o password incorrectos.",
+                });
+        }
+
+        res.status(201).json({
+            status: "Ok",
+            message: `Usuario autenticado con éxito.`,
+        });
+    } catch (error) {
         res.status(500).json({ status: "error", message: error.message });
     }
 };

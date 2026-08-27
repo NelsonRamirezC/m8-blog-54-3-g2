@@ -1,15 +1,15 @@
 import express from "express";
-import * as authController from "../controllers/auth.controllers.js";
+import * as authControllers from "../controllers/auth.controllers.js";
 import validaBody from "../middlewares/validaBody.js";
 
 const router = express.Router();
 
 
 //REGISTRAR NUEVOS USUARIOS
-router.post("/registro", validaBody, authController.registroUsuario);
-
+router.post("/registro", validaBody, authControllers.registroUsuario);
 
 //AUTENTICAR USUARIOS
+router.post("/login", validaBody, authControllers.login)
 
 
 
