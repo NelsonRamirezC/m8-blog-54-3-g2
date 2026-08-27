@@ -1,5 +1,6 @@
 import Usuario from "../models/Usuario.model.js";
 import sequelize from "../config/database.js";
+import { generarHash, compararHash } from "../utils/utils.js";
 
 export const registroUsuario = async (req, res) => {
     const t = await sequelize.transaction();
@@ -20,12 +21,15 @@ export const registroUsuario = async (req, res) => {
 
         email = email.toLowerCase().trim();
 
+        //SE ENVÍA A GENERAR HASH CON BCRYPT
+        let passwordHash = await generarHash(password);
+
         const [usuario, created] = await Usuario.findOrCreate({
             where: { email },
             defaults: {
                 nombre,
                 email,
-                password,
+                password: passwordHash,
             },
             transaction: t,
         });
@@ -69,7 +73,9 @@ export const login = async (req, res) => {
         //buscar usuario por su correo
         const usuario = await Usuario.findOne({ where: { email } });
 
-        if (!usuario || usuario.password != password) {
+        let coincidePassword = await compararHash(password, usuario.password);
+
+        if (!usuario || !coincidePassword) {
             return res
                 .status(400)
                 .json({
