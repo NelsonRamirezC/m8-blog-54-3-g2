@@ -1,3 +1,5 @@
+import bcrypt from "bcrypt";
+
 export const generarHash = async (password) => {
     const saltRounds = 12;
     const hash= await bcrypt.hash(password, saltRounds);
