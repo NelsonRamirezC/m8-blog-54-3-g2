@@ -4,18 +4,18 @@ import Comentario from "./Comentario.model.js"
 
 
 //relación 1 a muchos entre Usuarios y Publicaciones
-Usuario.hasMany(Publicacion, { foreignKey: "usuario_id", onDelete: "CASCADE" });
+Usuario.hasMany(Publicacion, { foreignKey: "usuarioId", onDelete: "CASCADE" });
 
-Publicacion.belongsTo(Usuario, { foreignKey: "usuario_id" });
+Publicacion.belongsTo(Usuario, { foreignKey: "usuarioId" });
 
 
 // Relaciones con Usuario
-Usuario.hasMany(Comentario, { foreignKey: "usuario_id", onDelete: "CASCADE" });
-Comentario.belongsTo(Usuario, { foreignKey: "usuario_id" });
+Usuario.hasMany(Comentario, { foreignKey: "usuarioId", onDelete: "CASCADE" });
+Comentario.belongsTo(Usuario, { foreignKey: "usuarioId" });
 
 // Relaciones con Publicacion
-Publicacion.hasMany(Comentario, { foreignKey: "publicacion_id", onDelete: "CASCADE" });
-Comentario.belongsTo(Publicacion, { foreignKey: "publicacion_id" });
+Publicacion.hasMany(Comentario, { foreignKey: "publicacionId", onDelete: "CASCADE" });
+Comentario.belongsTo(Publicacion, { foreignKey: "publicacionId" });
 
 export default {
     Usuario, Publicacion, Comentario

@@ -12,18 +12,20 @@ Comentario.init(
             primaryKey: true,
             autoIncrement: true,
         },
-        publicacion_id: {
+        publicacionId: {
             type: DataTypes.INTEGER,
             allowNull: false,
+            field: "publicacion_id",
             references: {
                 model: Publicacion,
                 key: "id",
             },
             onDelete: "CASCADE",
         },
-        usuario_id: {
+        usuarioId: {
             type: DataTypes.INTEGER,
             allowNull: false,
+            field: "usuario_id",
             references: {
                 model: Usuario,
                 key: "id",
@@ -48,6 +50,7 @@ Comentario.init(
         timestamps: true,
         createdAt: "fecha_creacion",
         updatedAt: "fecha_actualizacion",
+        underscored: true
     }
 );
 
