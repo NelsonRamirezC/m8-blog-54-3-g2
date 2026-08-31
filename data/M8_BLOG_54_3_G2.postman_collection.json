@@ -93,7 +93,7 @@
       "name": "USUARIOS",
       "item": [
         {
-          "name": "New Request",
+          "name": "GET ALL USUARIOS",
           "request": {
             "method": "GET",
             "header": [],
@@ -106,6 +106,112 @@
               "path": [
                 "api",
                 "usuarios"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET USUARIO BY ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "localhost:3000/api/usuarios/1",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "usuarios",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "PUBLICACIONES",
+      "item": [
+        {
+          "name": "GET ALL PUBLICACIONES",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "localhost:3000/api/publicaciones",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "publicaciones"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET PUBLICACIONES BY ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "localhost:3000/api/publicaciones/1",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "publicaciones",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "CREATE PUBLICACION",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "key": "usuarioId",
+                  "value": "1",
+                  "type": "text",
+                  "uuid": "e3499873-a929-43b9-89c6-38f1b4cd8366"
+                },
+                {
+                  "key": "titulo",
+                  "value": "Publicación 1",
+                  "type": "text",
+                  "uuid": "352ba793-ffb5-491b-93f9-4608fc02fb0b"
+                },
+                {
+                  "key": "contenido",
+                  "value": "Contenido publicación 1.",
+                  "type": "text",
+                  "uuid": "2a22f7b0-dca1-4e7a-88d8-1f2d238f265b"
+                }
+              ]
+            },
+            "url": {
+              "raw": "localhost:3000/api/publicaciones",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "publicaciones"
               ]
             }
           },

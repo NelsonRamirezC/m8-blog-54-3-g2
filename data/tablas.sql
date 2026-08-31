@@ -8,3 +8,22 @@ CREATE TABLE Usuarios (
 	admin BOOLEAN NOT NULL DEFAULT FALSE,
 	status BOOLEAN NOT NULL DEFAULT TRUE
 );
+
+CREATE TABLE publicaciones (
+    id SERIAL PRIMARY KEY,
+    usuario_id INTEGER NOT NULL REFERENCES usuarios(id) ON DELETE CASCADE,
+    titulo VARCHAR(255) NOT NULL,
+    contenido TEXT NOT NULL,
+    fecha_creacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    fecha_actualizacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+
+CREATE TABLE comentarios (
+    id SERIAL PRIMARY KEY,
+    publicacion_id INTEGER NOT NULL REFERENCES publicaciones(id) ON DELETE CASCADE,
+    usuario_id INTEGER NOT NULL REFERENCES usuarios(id) ON DELETE CASCADE,
+    contenido TEXT NOT NULL,
+    fecha_creacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+	fecha_actualizacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
