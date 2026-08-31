@@ -1,7 +1,6 @@
 import { DataTypes, Model } from "sequelize";
 import sequelize from "../config/database.js";
 
-
 class Usuario extends Model {}
 
 Usuario.init(
@@ -50,7 +49,5 @@ Usuario.init(
         updatedAt: "fecha_actualizacion",
     },
 );
-
-Usuario.sync({ force: false, alter: false });
 
 export default Usuario;
