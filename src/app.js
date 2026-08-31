@@ -1,6 +1,7 @@
 import express from "express";
 import authRoutes from "./routes/auth.routes.js";
 import usuariosRoutes from "./routes/usuarios.routes.js";
+import publicacionesRoutes from "./routes/publicaciones.routes.js";
 
 const app = express();
 
@@ -16,6 +17,7 @@ app.use("/auth", authRoutes);
 
 //RUTAS DE LA API
 app.use("/api/usuarios", usuariosRoutes);
+app.use("/api/publicaciones", publicacionesRoutes);
 
 
 export default app;

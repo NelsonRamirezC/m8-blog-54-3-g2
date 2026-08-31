@@ -11,9 +11,10 @@ Publicacion.init(
             primaryKey: true,
             autoIncrement: true,
         },
-        usuario_id: {
+        usuarioId: {
             type: DataTypes.INTEGER,
             allowNull: false,
+            field: "usuario_id",
             references: {
                 model: Usuario,
                 key: "id",
@@ -47,6 +48,7 @@ Publicacion.init(
         timestamps: true,
         createdAt: "fecha_creacion",
         updatedAt: "fecha_actualizacion",
+        underscored: true
     },
 );
 
