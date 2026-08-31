@@ -8,5 +8,8 @@ const router = express.Router();
 //OBTENER TODOS LOS USUARIOS
 router.get("/", usuariosControllers.getUsuarios);
 
+//OBTENER USUARIOS POR SU ID
+router.get("/:id", usuariosControllers.getUsuariosById);
+
 
 export default router;

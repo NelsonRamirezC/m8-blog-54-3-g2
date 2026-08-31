@@ -1,19 +1,21 @@
 import Usuario from "../../models/Usuario.model.js";
 
-const getUsuarios= async (req, res) => {
+const getUsuariosById= async (req, res) => {
     try {
 
-        const usuarios = await Usuario.findAll({
+        let { id } = req.params;
+
+        const usuario = await Usuario.findByPk(id, {
             attributes: ["id", "nombre", "email"]
         });
 
         res.json({
             status: "Ok",
-            usuarios,
+            usuario,
         });
     } catch (error) {
         res.status(500).json({ status: "error", message: error.message });
     }
 };
 
-export default getUsuarios;
+export default getUsuariosById;
