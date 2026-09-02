@@ -6,12 +6,12 @@ import Comentario from "./Comentario.model.js"
 //relación 1 a muchos entre Usuarios y Publicaciones
 Usuario.hasMany(Publicacion, { foreignKey: "usuarioId", onDelete: "CASCADE" });
 
-Publicacion.belongsTo(Usuario, { foreignKey: "usuarioId" });
+Publicacion.belongsTo(Usuario, { foreignKey: "usuarioId", as: "autor"});
 
 
 // Relaciones con Usuario
 Usuario.hasMany(Comentario, { foreignKey: "usuarioId", onDelete: "CASCADE" });
-Comentario.belongsTo(Usuario, { foreignKey: "usuarioId" });
+Comentario.belongsTo(Usuario, { foreignKey: "usuarioId", as: "autor" });
 
 // Relaciones con Publicacion
 Publicacion.hasMany(Comentario, { foreignKey: "publicacionId", onDelete: "CASCADE" });
