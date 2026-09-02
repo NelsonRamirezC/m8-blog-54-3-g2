@@ -5,9 +5,14 @@ const getUsuariosById= async (req, res) => {
 
         let { id } = req.params;
 
-        const usuario = await Usuario.findByPk(id, {
-            attributes: ["id", "nombre", "email"]
+        let usuario = await Usuario.findByPk(id, {
+            attributes: ["id", "nombre", "email", "mimetype"]
         });
+
+        
+        usuario = usuario.toJSON();
+        usuario.urlImagen = usuario.mimetype ? `/api/usuarios/${user.id}/avatar` : null;
+        delete usuario.mimetype;
 
         res.json({
             status: "Ok",

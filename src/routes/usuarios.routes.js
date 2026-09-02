@@ -12,4 +12,7 @@ router.get("/", usuariosControllers.getUsuarios);
 router.get("/:id", usuariosControllers.getUsuariosById);
 
 
+//OBTENER AVATAR USUARIO POR SU ID
+router.get("/:id/avatar", usuariosControllers.getAvatarByid);
+
 export default router;
