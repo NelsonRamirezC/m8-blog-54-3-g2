@@ -15,25 +15,31 @@
             "method": "POST",
             "header": [],
             "body": {
-              "mode": "urlencoded",
-              "urlencoded": [
+              "mode": "formdata",
+              "formdata": [
                 {
                   "key": "nombre",
-                  "value": "Miguel",
+                  "value": "Miguel 2",
                   "type": "text",
-                  "uuid": "198aead1-760d-41df-86f9-8cc1f9bf74d3"
+                  "uuid": "2087f3cf-e902-44ca-86f7-3847c780c363"
                 },
                 {
                   "key": "email",
-                  "value": "miguel@gmail.com",
+                  "value": "miguel2@gmail.com",
                   "type": "text",
-                  "uuid": "7578cd42-a332-4c6e-9983-706c42c6c5d4"
+                  "uuid": "8e490af2-a51d-4b94-a66e-77074f42846a"
                 },
                 {
                   "key": "password",
                   "value": "123456",
                   "type": "text",
-                  "uuid": "6ea4079a-4eb7-41de-a212-2e156f7aef14"
+                  "uuid": "f52b68e4-b662-4e79-9d67-455cac2ef60f"
+                },
+                {
+                  "key": "avatar",
+                  "type": "file",
+                  "uuid": "96b705d4-e4d6-4ff8-85a6-90aaad85571a",
+                  "src": "/C:/Users/NelsonRamírez/Downloads/avatar.jpg"
                 }
               ]
             },
@@ -117,7 +123,7 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "localhost:3000/api/usuarios/1",
+              "raw": "localhost:3000/api/usuarios/3",
               "host": [
                 "localhost"
               ],
@@ -125,7 +131,28 @@
               "path": [
                 "api",
                 "usuarios",
-                "1"
+                "3"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET AVATAR BY ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "localhost:3000/api/usuarios/4/avatar",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "usuarios",
+                "4",
+                "avatar"
               ]
             }
           },
@@ -214,6 +241,19 @@
                 "publicaciones"
               ]
             }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "COMENTARIOS",
+      "item": [
+        {
+          "name": "CREAR COMENTARIO",
+          "request": {
+            "method": "GET",
+            "header": []
           },
           "response": []
         }

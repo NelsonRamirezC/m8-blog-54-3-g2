@@ -12,6 +12,9 @@ app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 app.use(fileUpload()); // -> req.files 
 
+//establecer public como carpeta pública
+app.use(express.static("public"));
+
 
 //RUTAS DE VISTAS
 
