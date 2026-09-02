@@ -11,7 +11,7 @@ const getUsuariosById= async (req, res) => {
 
         
         usuario = usuario.toJSON();
-        usuario.urlImagen = usuario.mimetype ? `/api/usuarios/${user.id}/avatar` : null;
+        usuario.urlImagen = usuario.mimetype ? `/api/usuarios/${usuario.id}/avatar` : null;
         delete usuario.mimetype;
 
         res.json({
