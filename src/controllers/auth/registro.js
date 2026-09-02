@@ -17,6 +17,37 @@ const registroUsuario = async (req, res) => {
             });
         }
 
+
+        //SI EXISTE IMAGEN DE AVATAR, PROCESAMOS EL ARCHIVO
+
+        let imagenAvatar = undefined;
+        let mimetype = undefined;
+
+        if(req.files && req.files.avatar){
+
+            let avatar = req.files.avatar;
+
+            //GUARDAMOS LOS DATOS QUE NOS SIRVEN PARA SU RESPALDO EN LA BD
+            imagenAvatar = avatar.data;
+            mimetype = avatar.mimetype;
+
+            const formatosPermitidos = ["image/jpeg", "image/jpg", "image/webp", "image/svg"];
+
+            if(!formatosPermitidos.includes(mimetype)){
+                return res.status(400).json({message: "Formato imagen no permitido."});
+            }
+
+
+            //LIMITAR TAMAÑO DE IMAGEN
+
+            let maxSize = 2 * 1024 * 1024;
+
+            if(avatar.size > maxSize){
+                return res.status(413).json({message: "Imagen supera el tamaño máximo permitido de 2 Mbs."});
+            }
+
+        }
+
         //BUSCAR Y/O CREAR EL USUARIO
 
         email = email.toLowerCase().trim();
@@ -30,6 +61,8 @@ const registroUsuario = async (req, res) => {
                 nombre,
                 email,
                 password: passwordHash,
+                imagenAvatar,
+                mimetype
             },
             transaction: t,
         });
