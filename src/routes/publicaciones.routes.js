@@ -1,6 +1,7 @@
 import express from "express";
 import * as publicacionesControllers from "../controllers/publicaciones/index.js";
 import validaBody from "../middlewares/validaBody.js";
+import verifyToken from "../middlewares/verifyToken.js";
 
 const router = express.Router();
 
@@ -11,7 +12,7 @@ router.get("/", publicacionesControllers.getPublicaciones);
 router.get("/:id", publicacionesControllers.getPublicacionById);
 
 //CREAR PUBLICACIÓN
-router.post("/", validaBody, publicacionesControllers.crearPublicacion);
+router.post("/", validaBody, verifyToken,  publicacionesControllers.crearPublicacion);
 
 
 export default router;

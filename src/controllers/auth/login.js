@@ -1,5 +1,6 @@
 import Usuario from "../../models/Usuario.model.js";
-import { compararHash } from "../../utils/utils.js"
+import { compararHash } from "../../utils/utils.js";
+import jwt from "jsonwebtoken";
 
 const login = async (req, res) => {
     try {
@@ -32,9 +33,23 @@ const login = async (req, res) => {
                 });
         }
 
-        res.status(201).json({
+        //GENERAR TOKEN
+
+        const payload = {
+            id: usuario.id,
+            nombre: usuario.nombre,
+            email: usuario.email,
+            admin: usuario.admin,
+            status: usuario.status
+        }
+
+        const token = jwt.sign(payload, 'secreto', { expiresIn: '1m' });
+
+
+        res.status(200).json({
             status: "Ok",
             message: `Usuario autenticado con éxito.`,
+            token
         });
     } catch (error) {
         res.status(500).json({ status: "error", message: error.message });
