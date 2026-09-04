@@ -7,25 +7,16 @@ import sequelize from "../../config/database.js";
 const crearComentario= async (req, res) => {
     const t = await sequelize.transaction();
     try {
-        let { usuarioId, publicacionId, contenido } = req.body;
+        let { publicacionId, contenido } = req.body;
         
-        if (!usuarioId || !publicacionId|| !contenido) {
+        if (!publicacionId|| !contenido) {
             await t.rollback();
 
             return res.status(400).json({
                 status: "fail",
                 message:
-                    "No se proprocionan los campos requeridos para crear el comentario. Debe proporcionar los siguientes campos: [usuarioId, publicacionId, contenido]",
+                    "No se proprocionan los campos requeridos para crear el comentario. Debe proporcionar los siguientes campos: [publicacionId, contenido]",
             });
-        }
-
-
-        //VALIDAR SI USUARIO EXISTE
-        const usuario = await Usuario.findByPk(usuarioId, { transaction: t});
-
-        if(!usuario){
-            await t.rollback();
-            return res.status(404).json({status: "fail", message: "No existe un usuario registrado con el id: " + usuarioId});
         }
 
         //VALIDAR SI EXISTE LA PUBLICACIÓN
@@ -38,8 +29,10 @@ const crearComentario= async (req, res) => {
 
         //CREAR COMENTARIO
 
+        const usuario = req.usuario;
+
         const comentario = await Comentario.create(
-            {usuarioId, publicacionId, contenido},
+            {usuarioId: usuario.id, publicacionId, contenido},
             { transaction: t}
         );
 
