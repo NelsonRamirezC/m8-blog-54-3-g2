@@ -33,11 +33,13 @@ const deleteComentarioById = async (req, res) => {
 
         await comentario.destroy({ transaction: t });
 
-        await t.commit();
         res.json({
             status: "Ok",
             message: `Comentario eliminado con éxito.`,
         });
+
+        await t.commit();
+
     } catch (error) {
         await t.rollback();
         res.status(500).json({ status: "error", message: error.message });

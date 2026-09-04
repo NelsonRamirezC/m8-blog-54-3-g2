@@ -14,7 +14,7 @@ const verifyToken = (req, res, next) => {
 
         let token = req.headers.authorization.split(" ")[1];
 
-        jwt.verify(token, "secreto", async (error, decoded) => {
+        jwt.verify(token, process.env.SECRETO_JWT, async (error, decoded) => {
             if (error) {
                 return res
                     .status(401)

@@ -43,7 +43,7 @@ const login = async (req, res) => {
             status: usuario.status
         }
 
-        const token = jwt.sign(payload, 'secreto', { expiresIn: '5m' });
+        const token = jwt.sign(payload, process.env.SECRETO_JWT, { expiresIn: '5m' });
 
 
         res.status(200).json({

@@ -2,8 +2,7 @@ import { Sequelize } from "sequelize";
 
 //MOTOR_BASE_DATOS://NOMBRE_USUARIO:PASSWORD@DIRECCION_HOST:PUERTO/NOMBRE_BASE_DATOS
 
-const URI_DATABASE =
-    "postgres://postgres:123456@localhost:5432/m8_blog_54_3_g2";
+const URI_DATABASE = process.env.URI_DATABASE;
 
 const sequelize = new Sequelize(URI_DATABASE);
 
