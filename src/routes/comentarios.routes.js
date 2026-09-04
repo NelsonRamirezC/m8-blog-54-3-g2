@@ -8,5 +8,8 @@ const router = express.Router();
 //CREAR COMENTARIO
 router.post("/", validaBody, verifyToken, comentariosControllers.crearComentario);
 
+//ELIMINAR UN COMENTARIO
+router.delete("/:id", verifyToken, comentariosControllers.deleteComentarioById);
+
 
 export default router;
