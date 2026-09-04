@@ -67,13 +67,13 @@
               "urlencoded": [
                 {
                   "key": "email",
-                  "value": "miguel@gmail.com",
+                  "value": "miguel2@gmail.com",
                   "type": "text",
                   "uuid": "7578cd42-a332-4c6e-9983-706c42c6c5d4"
                 },
                 {
                   "key": "password",
-                  "value": "1234567",
+                  "value": "123456",
                   "type": "text",
                   "uuid": "6ea4079a-4eb7-41de-a212-2e156f7aef14"
                 }
@@ -157,6 +157,36 @@
             }
           },
           "response": []
+        },
+        {
+          "name": "DELETE USUARIO BY ID",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwibm9tYnJlIjoiTWlndWVsIDIiLCJlbWFpbCI6Im1pZ3VlbDJAZ21haWwuY29tIiwiYWRtaW4iOmZhbHNlLCJzdGF0dXMiOnRydWUsImlhdCI6MTc4ODUzNDE0MSwiZXhwIjoxNzg4NTM0MjAxfQ.qkSHVjb4y8IX-7bJXBpQlu9tfOUXMAtpZTA_WeGNzE8",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "localhost:3000/api/usuarios/4",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "usuarios",
+                "4"
+              ]
+            }
+          },
+          "response": []
         }
       ]
     },
@@ -205,17 +235,21 @@
         {
           "name": "CREATE PUBLICACION",
           "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibm9tYnJlIjoiTWFydGEiLCJlbWFpbCI6Im1hcnRhQGdtYWlsLmNvbSIsImFkbWluIjpmYWxzZSwic3RhdHVzIjp0cnVlLCJpYXQiOjE3ODg1MzI4MDUsImV4cCI6MTc4ODUzMjg2NX0.ucscxVIwqMmt1-F_Xfr0sBGRShOlhKkwE8z7SVrtzsg",
+                  "type": "string"
+                }
+              ]
+            },
             "method": "POST",
             "header": [],
             "body": {
               "mode": "urlencoded",
               "urlencoded": [
-                {
-                  "key": "usuarioId",
-                  "value": "1",
-                  "type": "text",
-                  "uuid": "e3499873-a929-43b9-89c6-38f1b4cd8366"
-                },
                 {
                   "key": "titulo",
                   "value": "Publicación 1",
@@ -252,8 +286,76 @@
         {
           "name": "CREAR COMENTARIO",
           "request": {
-            "method": "GET",
-            "header": []
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Mywibm9tYnJlIjoiTWlndWVsIiwiZW1haWwiOiJtaWd1ZWxAZ21haWwuY29tIiwiYWRtaW4iOmZhbHNlLCJzdGF0dXMiOnRydWUsImlhdCI6MTc4ODUzMzE0NSwiZXhwIjoxNzg4NTMzMjA1fQ.dsP2MTraZZ0e5VRebBU1Tjydn2mk_XPkbAHfSGcEfnU",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "key": "publicacionId",
+                  "value": "1",
+                  "type": "text",
+                  "uuid": "80427c08-31e9-4054-b199-f02521bd3c91"
+                },
+                {
+                  "key": "contenido",
+                  "value": "Me gustó la publicación.",
+                  "type": "text",
+                  "uuid": "c285219c-23b5-4207-b5da-3cd14452eb89"
+                }
+              ]
+            },
+            "url": {
+              "raw": "localhost:3000/api/comentarios",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "comentarios"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "DELETE COMENTARIO BY ID",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwibm9tYnJlIjoiTWlndWVsIDIiLCJlbWFpbCI6Im1pZ3VlbDJAZ21haWwuY29tIiwiYWRtaW4iOmZhbHNlLCJzdGF0dXMiOnRydWUsImlhdCI6MTc4ODUzNTUyNSwiZXhwIjoxNzg4NTM1ODI1fQ.lAZ--xHXJIgbyshXPuyMXm9WDMjr67x-ziZLAbNcUSw",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "localhost:3000/api/comentarios/1",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "comentarios",
+                "1"
+              ]
+            }
           },
           "response": []
         }

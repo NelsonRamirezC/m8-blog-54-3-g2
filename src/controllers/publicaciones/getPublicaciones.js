@@ -9,6 +9,7 @@ const getPublicaciones = async (req, res) => {
             include: [
                 {
                     model: Usuario,
+                    as: "autor",
                     attributes: ["id", "nombre", "email"]
                 }
             ]
