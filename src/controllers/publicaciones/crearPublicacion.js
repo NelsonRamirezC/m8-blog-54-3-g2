@@ -31,6 +31,7 @@ const crearPublicacion= async (req, res) => {
         res.status(201).json({
             status: "Ok",
             message: `Publicación creada con éxito con ID: ${publicacion.id}`,
+            publicacion
         });
     } catch (error) {
         await t.rollback();

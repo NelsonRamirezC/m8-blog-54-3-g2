@@ -55,6 +55,16 @@ router.get("/registro", (req, res)=> {
     }
 });
 
+router.get("/nueva-publicacion", (req, res)=> {
+    try {
+        res.render("nuevaPublicacion");
+    } catch (error) {
+        console.log(error);
+        res.render("nuevaPublicacion");
+    }
+});
+
+
 
 
 export default router;
