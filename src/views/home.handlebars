@@ -6,6 +6,31 @@
 
     <main class="container">
 
+        <section>
+            {{> statsCard titulo="Total Publicaciones" cantidad=cantidadPublicaciones}}
+        </section>
+
+        <section>
+            <h2 class="text-center">Publicaciones</h2>
+
+            <div class="row py-3 g-3">
+
+                {{#each publicaciones }}
+                <div class="col-12 col-sm-6">
+                    <div class="card">
+                        <h5 class="card-header">Autor: {{autor.nombre}} </h5>
+                        <div class="card-body">
+                            <h5 class="card-title">{{titulo}}</h5>
+                            <p class="card-text">Fecha creación: {{fechaCreacion}}</p>
+                            <p class="card-text">Fecha actualización: {{fechaActualizacion}}</p>
+                            <a href="#" class="btn btn-primary">Ver más</a>
+                        </div>
+                    </div>
+                </div>
+                {{/each}}
+            </div>
+        </section>
+
     </main>
 
 </div>
