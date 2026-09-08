@@ -15,9 +15,33 @@
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav ms-auto">
                 <a class="nav-link" href="/">Inicio</a>
-                <a class="nav-link" href="/login">Login</a>
-                <a class="nav-link" href="/registro">Registro</a>
+                <a class="nav-link" href="/login" id="link-login">Login</a>
+                <a class="nav-link" href="/registro" id="link-registro">Registro</a>
+                <a class="nav-link d-none" href="" id="link-salir">Salir</a>
+
             </div>
         </div>
     </div>
 </nav>
+
+<script>
+
+    const linkLogin = document.getElementById("link-login");
+    const linkRegistro = document.getElementById("link-registro");
+    const linkSalir = document.getElementById("link-salir");
+
+    if(localStorage.getItem("blog_token")){
+        linkLogin.classList.add("d-none");
+        linkRegistro.classList.add("d-none");
+        linkSalir.classList.remove("d-none");
+    }
+
+    if(linkSalir){
+        linkSalir.addEventListener("click", (event) => {
+            event.preventDefault();
+            localStorage.clear();
+            location.href = "/";
+        })
+    }
+
+</script>

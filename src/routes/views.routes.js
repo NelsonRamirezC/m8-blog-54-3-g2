@@ -27,8 +27,6 @@ router.get(["/"], async (req, res) => {
         });
         const cantidadPublicaciones = count;
 
-        console.log(publicaciones);
-
         res.render("home", {
             publicaciones, cantidadPublicaciones
         });
@@ -37,5 +35,26 @@ router.get(["/"], async (req, res) => {
         res.render("home");
     }
 });
+
+
+router.get("/login", (req, res)=> {
+    try {
+        res.render("login");
+    } catch (error) {
+        console.log(error);
+        res.render("login");
+    }
+});
+
+router.get("/registro", (req, res)=> {
+    try {
+        res.render("registro");
+    } catch (error) {
+        console.log(error);
+        res.render("registro");
+    }
+});
+
+
 
 export default router;
